@@ -106,7 +106,7 @@ Hi, I am Tarun Singh Tomar! I am a third year Computer Science and Engineering S
       Code lover
     </li>
     <li>
-       Sexy Developer, motherfucker
+       Sexy Developer
     </li>
     <li>
         Valorant Player
