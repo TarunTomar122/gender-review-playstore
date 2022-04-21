@@ -36,6 +36,7 @@ We have also created a frontend where we showed the general analysis from our da
 
 
 ## System Architecture
+![arch](https://github.com/TarunTomar122/gender-review-playstore/blob/master/arch.png)
 
 ## Team
 | Name                                            | Year      | Department                       |
