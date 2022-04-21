@@ -1,7 +1,7 @@
 # gender-review-playstore
 
 This is our SDE-PROJECT under Dr. Sumit Kalra. 
-Research paper -> https://link.springer.com/article/10.1007/s10664-021-10080-8
+Research paper -> https://link.springer.com/article/10.1007/s10664-021-10080-8                                      
 Doc link -> https://docs.google.com/document/d/1vRZpwwf8Zca_6X2SMfEjyicqOR3O9m-iWN7qoNu1CuY/edit
 
 ## Description
