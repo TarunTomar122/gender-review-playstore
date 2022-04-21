@@ -84,6 +84,7 @@ const Item = {
 }
 
 const FactComponent = (props) => {
+    console.log(props.fact)
     const {name, tags, category, imgSrc, link} = props.fact;
     return (
         <Container
@@ -92,17 +93,14 @@ const FactComponent = (props) => {
         >
             <Box target="_self" to={{pathname:link}}
         >
-            <Image img={imgSrc} />
-            <Title>{name}</Title>
+            {/* <Image img={imgSrc} /> */}
+            <Title>{props.fact[1].slice(0,400)+"..."}</Title>
+           
             <HashTags>
-                {
-                    tags.map((t,id) => {
-                        return <Tag key={id}>#{t}</Tag>
-                    })
-                }
+                <Tag>{props.user}</Tag>
             </HashTags>
             <Category>
-                {category}
+                {props.name}
             </Category>
         </Box>
         </Container>

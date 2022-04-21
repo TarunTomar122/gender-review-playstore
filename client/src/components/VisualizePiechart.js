@@ -20,7 +20,7 @@ import {
   Scatter,
   Bubble,
 } from "react-chartjs-2";
-import BarChart from "./BarChart";
+// import PieChart from "./PieChart";
 import LineChart from "./LineChart";
 import PieChart from "./PieChart";
 import PolarChart from "./PolarChart";
@@ -48,13 +48,83 @@ ChartJS.register(
   Legend
 );
 
-export const options = {
+export const options1 = {
+  responsive: true,
+  color: "#fff",
+  scales: {
+    y: {
+      ticks: {
+        color: "#fff",
+        format: {
+          style: "percent",
+        },
+      },
+    },
+
+    x: {
+      ticks: {
+        color: "white",
+      },
+    },
+  },
+  axisY: {
+    suffix: "%",
+  },
+  plugins: {
+    legend: {
+      position: "top",
+    },
+    title: {
+      display: true,
+      text: "Reviews of Men and Women for 'Art and Design' Apps",
+      color: "#fff",
+    },
+  },
+};
+export const options2 = {
+  responsive: true,
+  color: "#fff",
+  scales: {
+    y: {
+      ticks: {
+        color: "#fff",
+        format: {
+          style: "percent",
+        },
+      },
+    },
+
+    x: {
+      ticks: {
+        color: "white",
+      },
+    },
+  },
+  axisY: {
+    suffix: "%",
+  },
+  plugins: {
+    legend: {
+      position: "top",
+    },
+    title: {
+      display: true,
+      text: "Reviews of Men and Women for 'Books' Apps",
+      color: "#fff",
+    },
+  },
+};
+
+export const options3 = {
   responsive: true,
   color: "#fff",
   scales: {
     y: {
       ticks: {
         color: "white",
+        format: {
+          style: "percent",
+        },
       },
     },
     x: {
@@ -69,7 +139,126 @@ export const options = {
     },
     title: {
       display: true,
-      text: "Comparison of different app-categories wrt review",
+      text: "Reviews of Men and Women for 'Communication' Apps",
+      color: "#fff",
+    },
+  },
+};
+export const options4 = {
+  responsive: true,
+  color: "#fff",
+  scales: {
+    y: {
+      ticks: {
+        color: "white",
+        format: {
+          style: "percent",
+        },
+      },
+    },
+    x: {
+      ticks: {
+        color: "white",
+      },
+    },
+  },
+  plugins: {
+    legend: {
+      position: "top",
+    },
+    title: {
+      display: true,
+      text: "Reviews of Men and Women for 'Education' Apps",
+      color: "#fff",
+    },
+  },
+};
+
+export const options5 = {
+  responsive: true,
+  color: "#fff",
+  scales: {
+    y: {
+      ticks: {
+        color: "white",
+        format: {
+          style: "percent",
+        },
+      },
+    },
+    x: {
+      ticks: {
+        color: "white",
+      },
+    },
+  },
+  plugins: {
+    legend: {
+      position: "top",
+    },
+    title: {
+      display: true,
+      text: "Reviews of Men and Women for 'Entertainment' Apps",
+      color: "#fff",
+    },
+  },
+};
+
+export const options6 = {
+  responsive: true,
+  color: "#fff",
+  scales: {
+    y: {
+      ticks: {
+        color: "white",
+        format: {
+          style: "percent",
+        },
+      },
+    },
+    x: {
+      ticks: {
+        color: "white",
+      },
+    },
+  },
+  plugins: {
+    legend: {
+      position: "top",
+    },
+    title: {
+      display: true,
+      text: "Reviews of Men and Women for 'Health and Fitness' Apps",
+      color: "#fff",
+    },
+  },
+};
+
+export const options7 = {
+  responsive: true,
+  color: "#fff",
+  scales: {
+    y: {
+      ticks: {
+        color: "white",
+        format: {
+          style: "percent",
+        },
+      },
+    },
+    x: {
+      ticks: {
+        color: "white",
+      },
+    },
+  },
+  plugins: {
+    legend: {
+      position: "top",
+    },
+    title: {
+      display: true,
+      text: "Reviews of Men and Women for 'TopGames' Apps",
       color: "#fff",
     },
   },
@@ -95,8 +284,7 @@ const Spaceman = styled.div`
 
 const Box = styled.div`
   background-color: ${(props) => props.theme.body};
-
-  height: 400vh;
+  height: 700vh;
   position: relative;
   display: flex;
   align-items: center;
@@ -148,43 +336,233 @@ const App = () => {
   const data_total_female_review = [];
   const data_total_male_review = [];
   const data_int_reviews = [];
+  let total = 0;
   for (const item in d1) {
     // console.log(item);
-    console.log(d1[item]["total_reviews"]);
+
+    total = d1[item]["total_reviews"];
     label_array.push(item);
-    data_female_review.push(d1[item]["total_female_positive_reviews"]);
-    data_male_review.push(d1[item]["total_male_positive_reviews"]);
-    data_total_female_review.push(d1[item]["total_female_reviews"]);
-    data_total_male_review.push(d1[item]["total_male_reviews"]);
-    data_int_reviews.push(d1[item]["top_women_positive_reviews"][1]);
+    data_female_review.push(d1[item]["total_female_positive_reviews"] / total);
+    data_male_review.push(d1[item]["total_male_positive_reviews"] / total);
+    data_total_female_review.push(d1[item]["total_female_reviews"] / total);
+    data_total_male_review.push(d1[item]["total_male_reviews"] / total);
+    data_int_reviews.push(d1[item]["top_women_positive_reviews"][1] / total);
   }
 
+  //calculate percentage
+
+  //loop through the created arrays and find percentage
+
+  console.log(data_male_review);
+
+  console.log("oh yeah", label_array[0]);
+
   console.log(data_int_reviews[0][1]);
-  const [userData, setUserData] = useState({
-    labels: label_array,
+  const [userData1, setUserData1] = useState({
+    labels: [label_array[0]],
     color: "#fff",
     datasets: [
       {
         label: "Female Positive Review",
         // loop through objects of d1 and select totoal_female_positive_reviews
 
-        data: data_female_review,
+        data: [data_female_review[0]],
         color: "#fff",
         backgroundColor: `rgba(10, 80, 161,${0.3})`,
       },
       {
         label: "Male Positive Review",
-        data: data_male_review,
+        data: [data_male_review[0]],
         backgroundColor: `rgba(112, 219, 237,${0.3})`,
       },
       {
         label: "Total Female Reviews",
-        data: data_total_female_review,
+        data: [data_total_female_review[0]],
         backgroundColor: `rgba(10, 67, 124,${0.3})`,
       },
       {
         label: "Total Male Reviews",
-        data: data_total_male_review,
+        data: [data_total_male_review[0]],
+        backgroundColor: `rgb(10, 80, 161)`,
+      },
+    ],
+  });
+
+  const [userData2, setUserData2] = useState({
+    labels: [label_array[1]],
+    color: "#fff",
+    datasets: [
+      {
+        label: "Female Positive Review",
+        // loop through objects of d1 and select totoal_female_positive_reviews
+
+        data: [data_female_review[1]],
+        color: "#fff",
+        backgroundColor: `rgba(10, 80, 161,${0.3})`,
+      },
+      {
+        label: "Male Positive Review",
+        data: [data_male_review[1]],
+        backgroundColor: `rgba(112, 219, 237,${0.3})`,
+      },
+      {
+        label: "Total Female Reviews",
+        data: [data_total_female_review[1]],
+        backgroundColor: `rgba(10, 67, 124,${0.3})`,
+      },
+      {
+        label: "Total Male Reviews",
+        data: [data_total_male_review[1]],
+        backgroundColor: `rgb(10, 80, 161)`,
+      },
+    ],
+  });
+
+  const [userData3, setUserData3] = useState({
+    labels: [label_array[2]],
+    color: "#fff",
+    datasets: [
+      {
+        label: "Female Positive Review",
+        // loop through objects of d1 and select totoal_female_positive_reviews
+
+        data: [data_female_review[2]],
+        color: "#fff",
+        backgroundColor: `rgba(10, 80, 161,${0.3})`,
+      },
+      {
+        label: "Male Positive Review",
+        data: [data_male_review[2]],
+        backgroundColor: `rgba(112, 219, 237,${0.3})`,
+      },
+      {
+        label: "Total Female Reviews",
+        data: [data_total_female_review[2]],
+        backgroundColor: `rgba(10, 67, 124,${0.3})`,
+      },
+      {
+        label: "Total Male Reviews",
+        data: [data_total_male_review[2]],
+        backgroundColor: `rgb(10, 80, 161)`,
+      },
+    ],
+  });
+
+  const [userData4, setUserData4] = useState({
+    labels: [label_array[3]],
+    color: "#fff",
+    datasets: [
+      {
+        label: "Female Positive Review",
+        // loop through objects of d1 and select totoal_female_positive_reviews
+
+        data: [data_female_review[3]],
+        color: "#fff",
+        backgroundColor: `rgba(10, 80, 161,${0.3})`,
+      },
+      {
+        label: "Male Positive Review",
+        data: [data_male_review[3]],
+        backgroundColor: `rgba(112, 219, 237,${0.3})`,
+      },
+      {
+        label: "Total Female Reviews",
+        data: [data_total_female_review[3]],
+        backgroundColor: `rgba(10, 67, 124,${0.3})`,
+      },
+      {
+        label: "Total Male Reviews",
+        data: [data_total_male_review[3]],
+        backgroundColor: `rgb(10, 80, 161)`,
+      },
+    ],
+  });
+
+  const [userData5, setUserData5] = useState({
+    labels: [label_array[4]],
+    color: "#fff",
+    datasets: [
+      {
+        label: "Female Positive Review",
+        // loop through objects of d1 and select totoal_female_positive_reviews
+
+        data: [data_female_review[4]],
+        color: "#fff",
+        backgroundColor: `rgba(10, 80, 161,${0.3})`,
+      },
+      {
+        label: "Male Positive Review",
+        data: [data_male_review[4]],
+        backgroundColor: `rgba(112, 219, 237,${0.3})`,
+      },
+      {
+        label: "Total Female Reviews",
+        data:[data_total_female_review[4]],
+        backgroundColor: `rgba(10, 67, 124,${0.3})`,
+      },
+      {
+        label: "Total Male Reviews",
+        data: [data_total_male_review[4]],
+        backgroundColor: `rgb(10, 80, 161)`,
+      },
+    ],
+  });
+
+  const [userData6, setUserData6] = useState({
+    labels: [label_array[5]],
+    color: "#fff",
+    datasets: [
+      {
+        label: "Female Positive Review",
+        // loop through objects of d1 and select totoal_female_positive_reviews
+
+        data: [data_female_review[5]],
+        color: "#fff",
+        backgroundColor: `rgba(10, 80, 161,${0.3})`,
+      },
+      {
+        label: "Male Positive Review",
+        data: [data_male_review[5]],
+        backgroundColor: `rgba(112, 219, 237,${0.3})`,
+      },
+      {
+        label: "Total Female Reviews",
+        data: [data_total_female_review[5]],
+        backgroundColor: `rgba(10, 67, 124,${0.3})`,
+      },
+      {
+        label: "Total Male Reviews",
+        data: [data_total_male_review[5]],
+        backgroundColor: `rgb(10, 80, 161)`,
+      },
+    ],
+  });
+
+  const [userData7, setUserData7] = useState({
+    labels: [label_array[6]],
+    color: "#fff",
+    datasets: [
+      {
+        label: "Female Positive Review",
+        // loop through objects of d1 and select totoal_female_positive_reviews
+
+        data: [data_female_review[6]],
+        color: "#fff",
+        backgroundColor: `rgba(10, 80, 161,${0.3})`,
+      },
+      {
+        label: "Male Positive Review",
+        data: [data_male_review[6]],
+        backgroundColor: `rgba(112, 219, 237,${0.3})`,
+      },
+      {
+        label: "Total Female Reviews",
+        data: [data_total_female_review[6]],
+        backgroundColor: `rgba(10, 67, 124,${0.3})`,
+      },
+      {
+        label: "Total Male Reviews",
+        data: [data_total_male_review[6]],
         backgroundColor: `rgb(10, 80, 161)`,
       },
     ],
@@ -219,9 +597,29 @@ const App = () => {
         <Main ref={ref} variants={container} initial="hidden" animate="show">
           {
             <div>
-              <div style={{ width: 500 }}>
-                <PieChart options={options} chartData={userData} />
+              <div style={{ width: 500, height: 700 }}>
+                <PieChart options={options1} chartData={userData1} />
               </div>
+              <div style={{ width: 500, height: 700 }}>
+                <PieChart options={options2} chartData={userData2} />
+              </div>
+              <div style={{ width: 500, height: 700 }}>
+                <PieChart options={options3} chartData={userData3} />
+              </div>
+              <div style={{ width: 500, height: 700 }}>
+                <PieChart options={options4} chartData={userData4} />
+              </div>
+
+              <div style={{ width: 500, height: 700 }}>
+                <PieChart options={options5} chartData={userData5} />
+              </div>
+              <div style={{ width: 500, height: 700 }}>
+                <PieChart options={options6} chartData={userData6} />
+              </div>
+              <div style={{ width: 500, height: 700 }}>
+                <PieChart options={options7} chartData={userData7} />
+              </div>
+
               {/* <div style={{ width: 700 }}>
    <LineChart chartData={userData} />
  </div> */}
@@ -237,8 +635,8 @@ const App = () => {
  <div style={{ width: 300 }}>
    <DoughnutChart options={options} chartData={userData} />
    </div> */}
-              <br></br>
-              <br></br>
+              <br />
+              <br />
             </div>
           }
         </Main>
@@ -247,7 +645,7 @@ const App = () => {
           <YinYang width={80} height={80} fill={DarkTheme.text} />
         </Rotate>
 
-        <BigTitlte text="Visualize" top="5%" right="5%" />
+        <BigTitlte text="Visualize" top="3%" right="3%" />
       </Box>
     </ThemeProvider>
   );

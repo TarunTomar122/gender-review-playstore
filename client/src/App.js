@@ -1,6 +1,7 @@
 import { Route, Switch, useLocation } from "react-router"
 import { ThemeProvider } from "styled-components"
 import { lightTheme } from "./components/Themes"
+
 import GlobalStyle from "./globalStyles"
 
 
@@ -16,6 +17,7 @@ import VisualizePiechart from "./components/VisualizePiechart"
 import VisualizePolarchart from "./components/VisualizePolarchart";
 import VisualizeDoughnut from "./components/VisualizeDoughnutchart";
 import VisualizeLinechart from "./components/VisualizeLinechart";
+import Analyzeapp from "./components/Analyzeapp";
 import Communication from "./components/Communication";
 import { AnimatePresence } from "framer-motion";
 import SoundBar from "./subComponents/SoundBar";
@@ -46,7 +48,8 @@ function App() {
       <Route exact path="/piechart" component={VisualizePiechart}/>
       <Route exact path="/doughnut" component={VisualizeDoughnut}/>
       <Route exact path="/polarchart" component={VisualizePolarchart}/>
-      <Route exact path="/linechart" component={VisualizeLinechart}/>
+      <Route exact path="/linechart" component={VisualizeLinechart}/> 
+      <Route exact path="/analyze" component={Analyzeapp}/>
      
       
 
