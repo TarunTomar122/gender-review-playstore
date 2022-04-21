@@ -22,7 +22,7 @@ The categories chosen are as follows -
 
 Then we took the top 20 applications from each category and we scraped around 500 reviews from the google play store for each application which takes the means the total number of reviews scraped for the analysis was around 
 
-                                                              20*7*500 = 70000
+                                           20*7*500 = 70000
 
 
 Once we collected the data we went ahead and used several different techniques to classify the users as either male or female based on their user_name. 
